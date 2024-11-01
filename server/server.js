@@ -30,6 +30,9 @@ app.use("/api/v1/user", userRoute);
 app.use("/api/v1/post", postRoute);
 app.use("/api/v1/message", messageRoute);
 
+app.get("/", (req, res) => {
+    res.send("Server is Running...");
+});
 
 // server Running 
 const PORT = process.env.PORT || 5000;
