@@ -17,10 +17,12 @@ const corsOptions = {
     origin: process.env.CLIENT_URL,
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
     methods: ["GET,HEAD,PUT,PATCH,POST,DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Methods", "Access-Control-Request-Headers"],
     credentials: true,
     preflightContinue: false,
 }
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions))
 
 
 // api route
