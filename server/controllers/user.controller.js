@@ -38,7 +38,7 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
     try {
         const { email, password } = req.body;
-        console.log(email)
+       
         if (!email || !password) {
             return res.status(401).json({
                 message: "Something is missing, please check!",
@@ -52,7 +52,7 @@ export const login = async (req, res) => {
                 success: false,
             });
         }
-         console.log(user)
+        
         const isPasswordMatch = await bcrypt.compare(password, user.password);
         if (!isPasswordMatch) {
             return res.status(401).json({
@@ -62,7 +62,7 @@ export const login = async (req, res) => {
         };
 
         const token = await jwt.sign({ userId: user._id }, process.env.SECRET_KEY, { expiresIn: '1d' });
-         console.log(token)
+         
 
         // populate each post if in the posts array
         const populatedPosts = await Promise.all(
