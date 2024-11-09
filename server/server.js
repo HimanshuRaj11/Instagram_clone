@@ -8,7 +8,7 @@ import connectDB from "./utils/db.js";
 
 import { app, server } from "./socket/socket.js"
 
-
+ connectDB();
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
@@ -37,6 +37,6 @@ app.get("/", (req, res) => {
 // server Running 
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
-    connectDB();
+   
     console.log(`Server is Running On POST: ${PORT}`);
 })
